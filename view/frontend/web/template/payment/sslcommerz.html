@@ -1,0 +1,65 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ -->
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()" />
+        <label data-bind="attr: {'for': getCode()}" class="label">
+          <span data-bind="text: getTitle()"></span>
+        </label>
+    </div>
+
+    <div class="payment-method-content rk1">
+        <dl class="items payable" style="margin-bottom: 35px;">
+
+            <dt class="title">
+                <span>We Accept</span>
+            </dt>
+
+            <dd class="content">
+                <span id="logo_cc_visa" alt="Visa"></span>
+                <span id="logo_cc_mc" alt="MasterCard"></span>
+                <span id="logo_cc_ae" alt="american_express"></span>
+                <span id="logo_cc_dbbl" alt="NexusCard"></span>
+                <span id="logo_cc_rocket" alt="rocket"></span>
+                <span id="logo_cc_bkash" alt="bkash"></span>
+                <span id="logo_cc_nagad" alt="nagad"></span>
+            </dd>
+
+
+        </dl>
+
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <p data-bind="html: getInstructions()"></p>
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: placeOrder,
+                        attr: {'title': $t('Place Order')},
+                        enable: (getCode() == isChecked()),
+                        css: {disabled: !isPlaceOrderActionAllowed()}
+                        "
+                        disabled>
+                    <span data-bind="text: $t('Place Order')"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

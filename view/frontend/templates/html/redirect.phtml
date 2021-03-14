@@ -1,0 +1,18 @@
+<?php if($block->getPaymentMethod() == $block->getConfigPaymentData()) {
+	 $redirectUrl=$block->getBaseUrl()."order/payment?order_id=".$block->getLastOrderId();
+
+	?>
+
+
+<html>
+	<meta http-equiv="refresh"  content="0; URL=<?= $redirectUrl ?>">
+	<body>
+		<div class="rk button hidden-xs">
+ 
+		</div>
+
+	</body>
+</html>
+
+
+<?php } ?>

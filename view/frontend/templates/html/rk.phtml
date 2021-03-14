@@ -1,0 +1,19 @@
+<?php if($block->getPaymentMethod() == $block->getConfigPaymentData()) {
+
+	?>
+<div class="rk button hidden-xs">
+
+<?php
+
+ $url=$block->getBaseUrl()."order/payment?order_id=";
+
+    echo  "<br><h2 align='center'>Order successfully initiated. Please wait we are redirecting you to SSLCommerz...</h2><br>";
+
+	# echo "<script>window.location.href = '". $sslcz['GatewayPageURL'] ."';</script>";
+///////echo "<meta http-equiv='refresh' content='0;url=".$block->getPostData()."'>";
+	echo "<meta http-equiv='refresh' content='0;url=".$url.$block->getLastOrderId()."'>";
+	# header("Location: ". $sslcz['GatewayPageURL']);
+?>
+</div>
+
+<?php } ?>
